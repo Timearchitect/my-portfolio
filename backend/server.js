@@ -9,9 +9,24 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+//app.use("/projects", require("./routes/projects.js"));
+
+//PORT=3000
+//MONGO_URI=mongodb://localhost:27017/portfolioDB
+mongoose.connect("mongodb://localhost:27017/portfolioDB");
 
 
-app.use("/projects", require("./routes/projects"));
+app.get('/', (req,res) =>{
+  res.send  ("HEllo world")
+})
+app.get('/about', (req,res) =>{
+  res.send(   )
+})
+app.post('/')
+
+app.listen(3000, () => {
+  console.log(`Server running on port 3000`);
+});
 
 // DB connection
 mongoose.connect(process.env.MONGO_URI)
@@ -24,3 +39,4 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => {
     console.error("MongoDB error:", err.message);
   });
+ 
